@@ -17,10 +17,8 @@ services:
         generateValue: true
       - key: EENGINE_WORKERS
         value: cpus
-        sync: false
       - key: EENGINE_TIMEOUT
         value: 10s
-        sync: false
       - key: EENGINE_HOST
         value: 0.0.0.0
     autoDeploy: false # optional
