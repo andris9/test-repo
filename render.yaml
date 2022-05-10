@@ -1,0 +1,29 @@
+services:
+    # Web service
+    - type: web
+      name: emailengine
+      env: node
+      repo: https://github.com/postalsys/emailengine.git
+      buildCommand: npm install --production
+      startCommand: npm start
+      envVars:
+          - key: REDIS_HOST
+            fromService:
+                type: redis
+                name: ee redis
+                property: host # available properties are listed below
+          - key: REDIS_PORT
+            fromService:
+                type: redis
+                name: ee redis
+                property: port
+          - key: EENGINE_SECRET
+            generateValue: true
+      autoDeploy: false # optional
+
+    # The Redis instance
+    - type: redis
+      name: ee redis
+      ipAllowList: []
+      plan: free # optional (defaults to starter)
+      maxmemoryPolicy: noeviction # optional (defaults to allkeys-lru)
