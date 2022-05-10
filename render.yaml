@@ -4,6 +4,7 @@ services:
     name: emailengine
     env: node
     repo: https://github.com/postalsys/emailengine.git
+    healthCheckPath: /health
     buildCommand: npm install --production
     startCommand: npm start
     envVars:
@@ -14,6 +15,14 @@ services:
           property: connectionString
       - key: EENGINE_SECRET
         generateValue: true
+      - key: EENGINE_WORKERS
+        value: cpus
+        sync: false
+      - key: EENGINE_TIMEOUT
+        value: 10s
+        sync: false
+      - key: EENGINE_HOST
+        value: 0.0.0.0
     autoDeploy: false # optional
 
   # The Redis instance
