@@ -16,7 +16,7 @@ services:
       - key: EENGINE_SECRET
         generateValue: true
       - key: EENGINE_WORKERS
-        value: cpus
+        value: 2
       - key: EENGINE_TIMEOUT
         value: 10s
       - key: EENGINE_HOST
